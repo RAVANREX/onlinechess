@@ -131,7 +131,19 @@
             {
                 u=parseInt(u)+1;
                 s=parseInt(s)+1;
+                if(document.getElementById(u.toString()+s.toString()).innerHTML=="")
                 document.getElementById(u.toString()+s.toString()).classList.add("col");
+                else
+                {
+                    if($(currentID).attr("class")=="black" &&  $(u.toString()+s.toString()).attr("class")=="black")
+                    break;
+                    else if($(currentID).attr("class")=="white" &&  $(u.toString()+s.toString()).attr("class")=="white")
+                    break;
+                    else{
+                    document.getElementById(u.toString()+s.toString()).classList.add("col");
+                    break;    
+                }
+                }
             }
             var u=currentID.charAt(0);
             var s=currentID.charAt(1);
@@ -139,7 +151,19 @@
             {
                 u=parseInt(u)-1;
                 s=parseInt(s)-1;
+                if(document.getElementById(u.toString()+s.toString()).innerHTML=="")
                 document.getElementById(u.toString()+s.toString()).classList.add("col");
+                else
+                {
+                    if($(currentID).attr("class")=="black" &&  $(u.toString()+s.toString()).attr("class")=="black")
+                    break;
+                    else if($(currentID).attr("class")=="white" &&  $(u.toString()+s.toString()).attr("class")=="white")
+                    break;
+                    else{
+                    document.getElementById(u.toString()+s.toString()).classList.add("col");
+                    break;    
+                }
+                }
             }
             var u=currentID.charAt(0);
             var s=currentID.charAt(1);
@@ -147,7 +171,19 @@
             {
                 u=parseInt(u)+1;
                 s=parseInt(s)-1;
+                if(document.getElementById(u.toString()+s.toString()).innerHTML=="")
                 document.getElementById(u.toString()+s.toString()).classList.add("col");
+                else
+                {
+                    if($(currentID).attr("class")=="black" &&  $(u.toString()+s.toString()).attr("class")=="black")
+                    break;
+                    else if($(currentID).attr("class")=="white" &&  $(u.toString()+s.toString()).attr("class")=="white")
+                    break;
+                    else{
+                    document.getElementById(u.toString()+s.toString()).classList.add("col");
+                    break;    
+                }
+                }
             }
             var u=currentID.charAt(0);
             var s=currentID.charAt(1);
@@ -155,7 +191,19 @@
             {
                 u=parseInt(u)-1;
                 s=parseInt(s)+1;
+                if(document.getElementById(u.toString()+s.toString()).innerHTML=="")
                 document.getElementById(u.toString()+s.toString()).classList.add("col");
+                else
+                {
+                    if($(currentID).attr("class")=="black" &&  $(u.toString()+s.toString()).attr("class")=="black")
+                    break;
+                    else if($(currentID).attr("class")=="white" &&  $(u.toString()+s.toString()).attr("class")=="white")
+                    break;
+                    else{
+                    document.getElementById(u.toString()+s.toString()).classList.add("col");
+                    break;    
+                }
+                }
             }
             ///////////////////////////////////////////////////
             var u=currentID.charAt(0);
@@ -163,16 +211,38 @@
             while((parseInt(u)+1)<=7)
             {
                 u=parseInt(u)+1;
-               
+                if(document.getElementById(u.toString()+s).innerHTML=="")
                 document.getElementById(u.toString()+s).classList.add("col");
+                else
+                {
+                    if($(currentID).attr("class")=="black" &&  $(u.toString()+s).attr("class")=="black")
+                    break;
+                    else if($(currentID).attr("class")=="white" &&  $(u.toString()+s).attr("class")=="white")
+                    break;
+                    else{
+                    document.getElementById(u.toString()+s).classList.add("col");
+                    break;    
+                }
+                }
             }
             var u=currentID.charAt(0);
             var s=currentID.charAt(1);
             while((parseInt(u)-1)>=0 )
             {
                 u=parseInt(u)-1;
-                
+                if(document.getElementById(u.toString()+s).innerHTML=="")
                 document.getElementById(u.toString()+s).classList.add("col");
+                else
+                {
+                    if($(currentID).attr("class")=="black" &&  $(u.toString()+s).attr("class")=="black")
+                    break;
+                    else if($(currentID).attr("class")=="white" &&  $(u.toString()+s).attr("class")=="white")
+                    break;
+                    else{
+                    document.getElementById(u.toString()+s).classList.add("col");
+                    break;    
+                }
+                }
             }
             var u=currentID.charAt(0);
             var s=currentID.charAt(1);
@@ -180,14 +250,38 @@
             {
                 
                 s=parseInt(s)-1;
+                if(document.getElementById(u+s.toString()).innerHTML=="")
                 document.getElementById(u+s.toString()).classList.add("col");
+                else
+                {
+                    if($(currentID).attr("class")=="black" &&  $(u+s.toString()).attr("class")=="black")
+                    break;
+                    else if($(currentID).attr("class")=="white" &&  $(u+s.toString()).attr("class")=="white")
+                    break;
+                    else{
+                    document.getElementById(u+s.toString()).classList.add("col");
+                    break;    
+                }
+                }
             }
             var u=currentID.charAt(0);
             var s=currentID.charAt(1);
             while( (parseInt(s)+1)<=7)
             {
                 s=parseInt(s)+1;
+                if(document.getElementById(u+s.toString()).innerHTML=="")
                 document.getElementById(u+s.toString()).classList.add("col");
+                else
+                {
+                    if($("#"+currentID).attr("class")=="white" &&  $("#"+u+s.toString()).attr("class")=="black")
+                    break;
+                    else if($("#"+currentID).attr("class")=="black" &&  $("#"+u+s.toString()).attr("class")=="white")
+                    break;
+                    else{
+                    document.getElementById(u+s.toString()).classList.add("col");
+                    break;    
+                }
+                }
             }
             
             
@@ -670,6 +764,8 @@
                     var z=document.getElementById(prevID).innerHTML;
                     document.getElementById(currentID).innerHTML=z;
                     document.getElementById(prevID).innerHTML=""
+                    document.getElementById(currentID).classList.add("black");
+                    document.getElementById(prevID).classList.remove("black");
                 }
             }
             var u=prevID.charAt(0);

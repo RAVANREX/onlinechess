@@ -67,11 +67,28 @@
     document.getElementById('70').innerHTML="<p class='inside' >&#9814</p>"
     document.getElementById('71').innerHTML="<p class='inside' >&#9816</p>"
     document.getElementById('72').innerHTML="<p class='inside' >&#9815</p>"
-    document.getElementById('73').innerHTML="<p class='inside' >&#9813</p>"
+    document.getElementById('33').innerHTML="<p class='inside' >&#9813</p>"
     document.getElementById('74').innerHTML="<p class='inside' >&#9812</p>"
     document.getElementById('75').innerHTML="<p class='inside' >&#9815</p>"
     document.getElementById('76').innerHTML="<p class='inside' >&#9816</p>"
     document.getElementById('77').innerHTML="<p class='inside' >&#9814</p>"
+   
+    for(let i=0;i<2;i++)
+    {
+        for(let j=0;j<8;j++)
+        {
+            document.getElementById(i.toString()+j.toString()).classList.add("black");
+        }
+    }
+    for(let i=6;i<=7;i++)
+    {
+        for(let j=0;j<8;j++)
+        {
+            document.getElementById(i.toString()+j.toString()).classList.add("white");
+        }
+    }
+    
+
 </script>  
 
 </body>
