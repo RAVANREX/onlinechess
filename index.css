@@ -1,6 +1,6 @@
 
 .box{
-    background-image: url("chess.jpg");
+    background-image: url("chess.svg");
     background-repeat: no-repeat;
     width:600px;
     height: 600px;
@@ -9,12 +9,15 @@
     grid-template-columns: repeat(8,75px);
 }
 .inside{
-    font-size:50px;
+    font-size:65px;
     text-align:center;
+    font-family: 'Times New Roman', Times, serif;
+
     
 }
+.chessboard {
+    width: 650px;
+    height: 650px;
+    margin: auto;
+    border: 25px solid #333;}
 
-.col{
-    border-radius: 50%;
-    background-color: rgba(0, 255, 0.3,0.2);
-}
