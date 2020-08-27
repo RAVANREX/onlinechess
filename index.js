@@ -7,47 +7,31 @@
     var whiteKingPos="74",blackKingPos="04";
     var flag="white";
     $("div").click(function(evt){
+        console.log(flag)
         currentID=this.id;
-        if(flag=="white" && ($("#"+currentID).attr("class")=="white" || document.getElementById(currentID).innerHTML==""))
-        {
-         if(num==1){
-            num=fun1();
-        }else if(num==0){
-            num=bpawn();
-        }else if(num==2){
-            num=wpawn();
-        }else if(num==3){
-            num=boat();
-        }else if(num==4){
-            num=bishop();
-        }else if(num==5){
-            num=queen();
-        }else if(num==6){
-            num=knight();
-        }else if(num==7){
-            num=king();
-        }}
-        if(flag=="black" && ($("#"+currentID).attr("class")=="black" || document.getElementById(currentID).innerHTML==""))
-        { if(num==1){
-            num=fun1();
-        }else if(num==0){
-            num=bpawn();
-        }else if(num==2){
-            num=wpawn();
-        }else if(num==3){
-            num=boat();
-        }else if(num==4){
-            num=bishop();
-        }else if(num==5){
-            num=queen();
-        }else if(num==6){
-            num=knight();
-        }else if(num==7){
-            num=king();
-        }
-
-        }
         
+         if(num==1){
+            if(flag=="white" && $("#"+currentID).attr("class")=="white")
+            num=fun1();
+            else if(flag=="black" && $("#"+currentID).attr("class")=="black")
+            num=fun1();
+        }else if(num==0){
+            if(flag=="black")
+            num=bpawn();
+        }else if(num==2){
+            if(flag=="white")
+            num=wpawn();
+        }else if(num==3){
+            num=boat();
+        }else if(num==4){
+            num=bishop();
+        }else if(num==5){
+            num=queen();
+        }else if(num==6){
+            num=knight();
+        }else if(num==7){
+            num=king();
+        }
     })
 
 
@@ -694,28 +678,41 @@
         if(currentID==(parseInt(u)+1).toString()+s.toString() && document.getElementById(currentID).innerHTML=="")
         {
           Empty(currentID,prevID);
+          if(flag=="white")
+          flag="black"
+          else
           flag="white"
           return 1;
         }
         if(currentID==(parseInt(u)+2).toString()+s.toString() && document.getElementById(currentID).innerHTML=="")
         {
           Empty(currentID,prevID);
+          if(flag=="white")
+          flag="black"
+          else
           flag="white"
           return 1;
         }
         else if(currentID==(parseInt(u)+1).toString()+(parseInt(s)-1).toString() && document.getElementById(currentID).innerHTML!="" && $("#"+currentID).attr("class")!=$("#"+prevID).attr("class"))
         {
             nonEmpty(currentID,prevID);
-            flag="white"
+            if(flag=="white")
+          flag="black"
+          else
+          flag="white"
             return 1;
         }
         else if(currentID==(parseInt(u)+1).toString()+(parseInt(s)+1).toString() && document.getElementById(currentID).innerHTML!="" && $("#"+currentID).attr("class")!=$("#"+prevID).attr("class"))
         {
             nonEmpty(currentID,prevID);
-            flag="white"
+            if(flag=="white")
+          flag="black"
+          else
+          flag="white"
             return 1;
         }
         else{
+            
         return 1;
         }
     }
@@ -731,25 +728,37 @@
         if(currentID==(parseInt(u)-1).toString()+s.toString() && document.getElementById(currentID).innerHTML=="")
         {
           Empty(currentID,prevID);
+          if(flag=="white")
           flag="black"
+          else
+          flag="white"
           return 1;
         }
         if(currentID==(parseInt(u)-2).toString()+s.toString() && document.getElementById(currentID).innerHTML=="")
         {
           Empty(currentID,prevID);
+          if(flag=="white")
           flag="black"
+          else
+          flag="white"
           return 1;
         }
         else if(currentID==(parseInt(u)-1).toString()+(parseInt(s)-1).toString() && document.getElementById(currentID).innerHTML!="" && $("#"+currentID).attr("class")!=$("#"+prevID).attr("class"))
         {
             nonEmpty(currentID,prevID);
-            flag="black"
+            if(flag=="white")
+          flag="black"
+          else
+          flag="white"
             return 1;
         }
         else if(currentID==(parseInt(u)-1).toString()+(parseInt(s)+1).toString() && document.getElementById(currentID).innerHTML!="" && $("#"+currentID).attr("class")!=$("#"+prevID).attr("class"))
         {
             nonEmpty(currentID,prevID);
-            flag="black"
+            if(flag=="white")
+          flag="black"
+          else
+          flag="white"
             return 1;
         }
         else{
@@ -1113,23 +1122,58 @@ function Empty(currentID,prevID)
     var z=document.getElementById(prevID).innerHTML;
     document.getElementById(currentID).innerHTML=z;
     document.getElementById(currentID).classList.add($("#"+prevID).attr("class"));
-    document.getElementById(prevID).classList.remove($("#"+currentID).attr("class"));
-    document.getElementById(prevID).innerHTML="";
-    kingcheck(whiteKingPos,blackKingPos)
-    
+    document.getElementById(prevID).classList.remove($("#"+prevID).attr("class"));
+    document.getElementById(prevID).innerHTML=""; 
+   if(wkingcheck(whiteKingPos) && flag=="white")
+   {console.log("white king check")
+       document.getElementById(prevID).innerHTML=z;
+       document.getElementById(currentID).innerHTML=""
+       document.getElementById(prevID).classList.add($("#"+currentID).attr("class"));
+       document.getElementById(currentID).classList.remove($("#"+prevID).attr("class"))
+       flag="black"    
+   }
+   if(flag=="black" && bkingcheck(blackKingPos))
+   {console.log("black king check")
+    document.getElementById(prevID).innerHTML=z;
+    document.getElementById(currentID).innerHTML=""
+    document.getElementById(prevID).classList.add($("#"+currentID).attr("class"));
+    document.getElementById(currentID).classList.remove($("#"+prevID).attr("class"))
+    flag="white"
+   }
 }
 
 
 function nonEmpty(currentID,prevID)
-{   document.getElementById("myAudio").play()
+{   document.getElementById("myAudio").play() 
     var z=document.getElementById(prevID).innerHTML;
+    var y=document.getElementById(currentID).innerHTML;
     document.getElementById(currentID).innerHTML=z;
     document.getElementById(prevID).innerHTML=""
-    document.getElementById(currentID).classList.remove($("#"+currentID).attr("class"))   
-   document.getElementById(currentID).classList.add($("#"+prevID).attr("class"));
-   kingcheck(whiteKingPos,blackKingPos)
-   
-   
+    document.getElementById(currentID).classList.remove($("#"+currentID).attr("class"))
+    document.getElementById(currentID).classList.add($("#"+prevID).attr("class"));
+    document.getElementById(prevID).classList.remove($("#"+prevID).attr("class"))
+
+  if(wkingcheck(whiteKingPos) && flag=="white")
+   {console.log("white king check")
+       document.getElementById(prevID).innerHTML=z;
+       document.getElementById(currentID).innerHTML=y;
+       document.getElementById(prevID).classList.remove($("#"+prevID).attr("class"))   
+       document.getElementById(prevID).classList.add($("#"+currentID).attr("class"));
+       document.getElementById(currentID).classList.remove($("#"+currentID).attr("class"))   
+       document.getElementById(currentID).classList.add($("#"+prevID).attr("class"));
+       flag="black"
+   }
+   if(bkingcheck(blackKingPos) && flag=="black")
+   {console.log("black king check")
+       document.getElementById(prevID).innerHTML=z;
+       document.getElementById(currentID).innerHTML=y;
+       document.getElementById(prevID).classList.remove($("#"+prevID).attr("class"))   
+       document.getElementById(prevID).classList.add($("#"+currentID).attr("class"));
+       document.getElementById(currentID).classList.remove($("#"+currentID).attr("class"))   
+       document.getElementById(currentID).classList.add($("#"+prevID).attr("class"));
+       flag="white"
+   }
+
 }
 
 
@@ -1171,29 +1215,467 @@ function KingTracker(prevID,u,s){
 }
 
 
-function kingcheck(whiteKingPos,blackKingPos){
+function wkingcheck(whiteKingPos){
+    console.log(whiteKingPos)
     u=whiteKingPos.charAt(0);
     s=whiteKingPos.charAt(1);
     while((parseInt(u)+1)<=7 && (parseInt(s)+1)<=7)
     {
         u=parseInt(u)+1;
         s=parseInt(s)+1;
-        if(document.getElementById(u.toString()+s.toString())!="")
+        if(document.getElementById(u.toString()+s.toString()).innerHTML!="")
         {
-            if($("#"+u.toString()+s.toString()).attr("class")!=$("#"+whiteKingPos).attr("class") && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9819" || document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9813" || document.getElementById(currentID).innerText.charCodeAt(0)=="9821" || document.getElementById(currentID).innerText.charCodeAt(0)=="9815" ))
+            if($("#"+u.toString()+s.toString()).attr("class")!=$("#"+whiteKingPos).attr("class") && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9819" || document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9821"))
             {
-             
+             return true;
+            }
+            break;
+        }
+    }
+    u=whiteKingPos.charAt(0);
+    s=whiteKingPos.charAt(1);
+    while((parseInt(u)-1)>=0 && (parseInt(s)-1)>=0)
+    {
+        u=parseInt(u)-1;
+        s=parseInt(s)-1;
+        if(document.getElementById(u.toString()+s.toString()).innerHTML!="")
+        {
+            if($("#"+u.toString()+s.toString()).attr("class")!=$("#"+whiteKingPos).attr("class") && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9819" || document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9821"))
+            {
+             return true;
+            }
+            break;
+        }
+    }
+    u=whiteKingPos.charAt(0);
+    s=whiteKingPos.charAt(1);
+    while((parseInt(u)+1)<=7 && (parseInt(s)-1)>=0)
+    {
+        u=parseInt(u)+1;
+        s=parseInt(s)-1;
+        if(document.getElementById(u.toString()+s.toString().innerHTML)!="")
+        {
+            if($("#"+u.toString()+s.toString()).attr("class")!=$("#"+whiteKingPos).attr("class") && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9819" || document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9821"))
+            {
+             return true;
+            }
+            break;
+        }
+    }
+    u=whiteKingPos.charAt(0);
+    s=whiteKingPos.charAt(1);
+    while((parseInt(u)-1)>=0 && (parseInt(s)+1)<=7)
+    {
+        u=parseInt(u)-1;
+        s=parseInt(s)+1;
+        if(document.getElementById(u.toString()+s.toString().innerHTML)!="")
+        {
+            if($("#"+u.toString()+s.toString()).attr("class")!=$("#"+whiteKingPos).attr("class") && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9819" || document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9821"))
+            {
+             return true;
+            }
+            break;
+        }
+    }
+    u=whiteKingPos.charAt(0);
+    s=whiteKingPos.charAt(1);
+    while((parseInt(u)+1)<=7)
+    {
+        u=parseInt(u)+1;
+        if(document.getElementById(u.toString()+s.toString().innerHTML)!="")
+        {
+            if($("#"+u.toString()+s.toString()).attr("class")!=$("#"+whiteKingPos).attr("class") && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9819" || document.getElementById(currentID).innerText.charCodeAt(0)=="9820"))
+            {
+             return true;
+            }
+            break;
+        }
+    }
+    u=whiteKingPos.charAt(0);
+    s=whiteKingPos.charAt(1);
+    while((parseInt(u)-1)>=0)
+    {
+        u=parseInt(u)-1;
+        if(document.getElementById(u.toString()+s.toString().innerHTML)!="")
+        {
+            if($("#"+u.toString()+s.toString()).attr("class")!=$("#"+whiteKingPos).attr("class") && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9819" || document.getElementById(currentID).innerText.charCodeAt(0)=="9820"))
+            {
+             return true;
+            }
+        
+        }
+    }
+    u=whiteKingPos.charAt(0);
+    s=whiteKingPos.charAt(1);
+    while((parseInt(s)+1)<=7)
+    {
+        u=parseInt(s)+1;
+        if(document.getElementById(u.toString()+s.toString().innerHTML)!="")
+        {
+            if($("#"+u.toString()+s.toString()).attr("class")!=$("#"+whiteKingPos).attr("class") && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9819" || document.getElementById(currentID).innerText.charCodeAt(0)=="9820"))
+            {
+             return true;
+            }
+            break;
+        }
+    }
+    u=whiteKingPos.charAt(0);
+    s=whiteKingPos.charAt(1);
+    while((parseInt(s)-1)>=0)
+    {
+        u=parseInt(s)-1;
+        if(document.getElementById(u.toString()+s.toString().innerHTML)!="")
+        {
+            if($("#"+u.toString()+s.toString()).attr("class")!=$("#"+whiteKingPos).attr("class") && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9819" || document.getElementById(currentID).innerText.charCodeAt(0)=="9820"))
+            {
+             return true;
+            }
+            break;
+        }
+    }
+    u=whiteKingPos.charAt(0);
+    s=whiteKingPos.charAt(1);
+    if((parseInt(u)-1)>=0 && (parseInt(s)-2)>=0)
+    {
+        u=parseInt(u)-1;
+        s=parseInt(s)-2;
+        if(document.getElementById(u.toString()+s.toString().innerHTML)!="")
+        {
+            if($("#"+u.toString()+s.toString()).attr("class")!=$("#"+whiteKingPos).attr("class") && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9822"))
+            {
+             return true;
             }
         }
     }
-if(blackKingPos==u.toString()+s.toString()){
-
-    alert("black king check")
+    u=whiteKingPos.charAt(0);
+    s=whiteKingPos.charAt(1);
+    if((parseInt(u)-1)>=0 && (parseInt(s)+2)<=7)
+    {
+        u=parseInt(u)-1;
+        s=parseInt(s)+2;
+        if(document.getElementById(u.toString()+s.toString().innerHTML)!="")
+        {
+            if($("#"+u.toString()+s.toString()).attr("class")!=$("#"+whiteKingPos).attr("class") && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9822"))
+            {
+             return true;
+            }
+        }
+    }
+    u=whiteKingPos.charAt(0);
+    s=whiteKingPos.charAt(1);
+    if((parseInt(u)+1)<=7 && (parseInt(s)-2)>=0)
+    {
+        u=parseInt(u)+1;
+        s=parseInt(s)-2;
+        if(document.getElementById(u.toString()+s.toString().innerHTML)!="")
+        {
+            if($("#"+u.toString()+s.toString()).attr("class")!=$("#"+whiteKingPos).attr("class") && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9822"))
+            {
+             return true;
+            }
+        }
+    }
+    u=whiteKingPos.charAt(0);
+    s=whiteKingPos.charAt(1);
+    if((parseInt(u)+1)<=7 && (parseInt(s)+2)<=7)
+    {
+        u=parseInt(u)+1;
+        s=parseInt(s)+2;
+        if(document.getElementById(u.toString()+s.toString().innerHTML)!="")
+        {
+            if($("#"+u.toString()+s.toString()).attr("class")!=$("#"+whiteKingPos).attr("class") && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9822"))
+            {
+             return true;
+            }
+        }
+    }    
+    u=whiteKingPos.charAt(0);
+    s=whiteKingPos.charAt(1);
+    if((parseInt(u)-2)>=0 && (parseInt(s)-1)>=0)
+    {
+        u=parseInt(u)-2;
+        s=parseInt(s)-1;
+        if(document.getElementById(u.toString()+s.toString().innerHTML)!="")
+        {
+            if($("#"+u.toString()+s.toString()).attr("class")!=$("#"+whiteKingPos).attr("class") && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9822"))
+            {
+             return true;
+            }
+        }
+    }  
+    u=whiteKingPos.charAt(0);
+    s=whiteKingPos.charAt(1);
+    if((parseInt(u)-2)>=0 && (parseInt(s)+1)<=7)
+    {
+        u=parseInt(u)-2;
+        s=parseInt(s)+1;
+        if(document.getElementById(u.toString()+s.toString().innerHTML)!="")
+        {
+            if($("#"+u.toString()+s.toString()).attr("class")!=$("#"+whiteKingPos).attr("class") && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9822"))
+            {
+             return true;
+            }
+        }
+    }
+    u=whiteKingPos.charAt(0);
+    s=whiteKingPos.charAt(1);
+    if((parseInt(u)+2)<=7 && (parseInt(s)-1)>=0)
+    {
+        u=parseInt(u)+2;
+        s=parseInt(s)-1;
+        if(document.getElementById(u.toString()+s.toString().innerHTML)!="")
+        {
+            if($("#"+u.toString()+s.toString()).attr("class")!=$("#"+whiteKingPos).attr("class") && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9822"))
+            {
+             return true;
+            }
+        }
+    }
+    u=whiteKingPos.charAt(0);
+    s=whiteKingPos.charAt(1);
+    if((parseInt(u)+2)<=7 && (parseInt(s)+1)<=7)
+    {
+        u=parseInt(u)+2;
+        s=parseInt(s)+1;
+        if(document.getElementById(u.toString()+s.toString().innerHTML)!="")
+        {
+            if($("#"+u.toString()+s.toString()).attr("class")!=$("#"+whiteKingPos).attr("class") && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9822"))
+            {
+             return true;
+            }
+        }
+    } 
+    return false;  
 }
-if(blackKingPos==u.toString()+s.toString()){
-    
-    alert("black king check")
-}
-
+function bkingcheck(blackKingPos){
+    u=blackKingPos.charAt(0);
+    s=blackKingPos.charAt(1);
+    while((parseInt(u)+1)<=7 && (parseInt(s)+1)<=7)
+    {
+        u=parseInt(u)+1;
+        s=parseInt(s)+1;
+        if(document.getElementById(u.toString()+s.toString().innerHTML)!="")
+        {
+            if($("#"+u.toString()+s.toString()).attr("class")!=$("#"+blackKingPos).attr("class") && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9813" || document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9815"))
+            {
+             return true;
+            }
+            break;
+        }
+    }
+    u=blackKingPos.charAt(0);
+    s=blackKingPos.charAt(1);
+    while((parseInt(u)-1)>=0 && (parseInt(s)-1)>=0)
+    {
+        u=parseInt(u)-1;
+        s=parseInt(s)-1;
+        if(document.getElementById(u.toString()+s.toString().innerHTML)!="")
+        {
+            if($("#"+u.toString()+s.toString()).attr("class")!=$("#"+blackKingPos).attr("class") && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9813" || document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9815"))
+            {
+             return true;
+            }
+            break;
+        }
+    }
+    u=blackKingPos.charAt(0);
+    s=blackKingPos.charAt(1);
+    while((parseInt(u)+1)<=7 && (parseInt(s)-1)>=0)
+    {
+        u=parseInt(u)+1;
+        s=parseInt(s)-1;
+        if(document.getElementById(u.toString()+s.toString().innerHTML)!="")
+        {
+            if($("#"+u.toString()+s.toString()).attr("class")!=$("#"+blackKingPos).attr("class") && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9813" || document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9815"))
+            {
+             return true;
+            }
+            break;
+        }
+    }
+    u=blackKingPos.charAt(0);
+    s=blackKingPos.charAt(1);
+    while((parseInt(u)-1)>=0 && (parseInt(s)+1)<=7)
+    {
+        u=parseInt(u)-1;
+        s=parseInt(s)+1;
+        if(document.getElementById(u.toString()+s.toString().innerHTML)!="")
+        {
+            if($("#"+u.toString()+s.toString()).attr("class")!=$("#"+blackKingPos).attr("class") && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9813" || document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9815"))
+            {
+             return true;
+            }
+            break;
+        }
+    }
+    u=blackKingPos.charAt(0);
+    s=blackKingPos.charAt(1);
+    while((parseInt(u)+1)<=7)
+    {
+        u=parseInt(u)+1;
+        if(document.getElementById(u.toString()+s.toString().innerHTML)!="")
+        {
+            if($("#"+u.toString()+s.toString()).attr("class")!=$("#"+blackKingPos).attr("class") && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9813" || document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9814"))
+            {
+             return true;
+            }
+            break;
+        }
+    }
+    u=blackKingPos.charAt(0);
+    s=blackKingPos.charAt(1);
+    while((parseInt(u)-1)>=0)
+    {
+        u=parseInt(u)-1;
+        if(document.getElementById(u.toString()+s.toString().innerHTML)!="")
+        {
+            if($("#"+u.toString()+s.toString()).attr("class")!=$("#"+blackKingPos).attr("class") && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9813" || document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9814"))
+            {
+             return true;
+            }
+            break;
+        }
+    }
+    u=blackKingPos.charAt(0);
+    s=blackKingPos.charAt(1);
+    while((parseInt(s)+1)<=7)
+    {
+        u=parseInt(s)+1;
+        if(document.getElementById(u.toString()+s.toString().innerHTML)!="")
+        {
+            if($("#"+u.toString()+s.toString()).attr("class")!=$("#"+blackKingPos).attr("class") && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9813" || document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9814"))
+            {
+             return true;
+            }
+            break;
+        }
+    }
+    u=blackKingPos.charAt(0);
+    s=blackKingPos.charAt(1);
+    while((parseInt(s)-1)>=0)
+    {
+        u=parseInt(s)-1;
+        if(document.getElementById(u.toString()+s.toString().innerHTML)!="")
+        {
+            if($("#"+u.toString()+s.toString()).attr("class")!=$("#"+blackKingPos).attr("class") && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9813" || document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9814"))
+            {
+             return true;
+            }
+            break;
+        }
+    }
+    u=blackKingPos.charAt(0);
+    s=blackKingPos.charAt(1);
+    if((parseInt(u)-1)>=0 && (parseInt(s)+2)<=7)
+    {
+        u=parseInt(u)-1;
+        s=parseInt(s)+2;
+        if(document.getElementById(u.toString()+s.toString().innerHTML)!="")
+        {
+            if($("#"+u.toString()+s.toString()).attr("class")!=$("#"+blackKingPos).attr("class") && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9816"))
+            {
+             return true;
+            }
+        }
+    }
+    u=blackKingPos.charAt(0);
+    s=blackKingPos.charAt(1);
+    if((parseInt(u)-1)>=0 && (parseInt(s)-2)>=0)
+    {
+        u=parseInt(u)-1;
+        s=parseInt(s)-2;
+        if(document.getElementById(u.toString()+s.toString().innerHTML)!="")
+        {
+            if($("#"+u.toString()+s.toString()).attr("class")!=$("#"+blackKingPos).attr("class") && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9816"))
+            {
+             return true;
+            }
+        }
+    }
+    u=blackKingPos.charAt(0);
+    s=blackKingPos.charAt(1);
+    if((parseInt(u)+1)<=7 && (parseInt(s)-2)>=0)
+    {
+        u=parseInt(u)+1;
+        s=parseInt(s)-2;
+        if(document.getElementById(u.toString()+s.toString().innerHTML)!="")
+        {
+            if($("#"+u.toString()+s.toString()).attr("class")!=$("#"+blackKingPos).attr("class") && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9816"))
+            {
+             return true;
+            }
+        }
+    }
+    u=blackKingPos.charAt(0);
+    s=blackKingPos.charAt(1);
+    if((parseInt(u)+1)<=7 && (parseInt(s)+2)<=7)
+    {
+        u=parseInt(u)+1;
+        s=parseInt(s)+2;
+        if(document.getElementById(u.toString()+s.toString().innerHTML)!="")
+        {
+            if($("#"+u.toString()+s.toString()).attr("class")!=$("#"+blackKingPos).attr("class") && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9816"))
+            {
+             return true;
+            }
+        }
+    }    
+    u=blackKingPos.charAt(0);
+    s=blackKingPos.charAt(1);
+    if((parseInt(u)-2)>=0 && (parseInt(s)-1)>=0)
+    {
+        u=parseInt(u)-2;
+        s=parseInt(s)-1;
+        if(document.getElementById(u.toString()+s.toString().innerHTML)!="")
+        {
+            if($("#"+u.toString()+s.toString()).attr("class")!=$("#"+blackKingPos).attr("class") && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9816"))
+            {
+             return true;
+            }
+        }
+    }  
+    u=blackKingPos.charAt(0);
+    s=blackKingPos.charAt(1);
+    if((parseInt(u)-2)>=0 && (parseInt(s)+1)<=7)
+    {
+        u=parseInt(u)-2;
+        s=parseInt(s)+1;
+        if(document.getElementById(u.toString()+s.toString().innerHTML)!="")
+        {
+            if($("#"+u.toString()+s.toString()).attr("class")!=$("#"+blackKingPos).attr("class") && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9816"))
+            {
+             return true;
+            }
+        }
+    }
+    u=blackKingPos.charAt(0);
+    s=blackKingPos.charAt(1);
+    if((parseInt(u)+2)<=7 && (parseInt(s)-1)>=0)
+    {
+        u=parseInt(u)+2;
+        s=parseInt(s)-1;
+        if(document.getElementById(u.toString()+s.toString().innerHTML)!="")
+        {
+            if($("#"+u.toString()+s.toString()).attr("class")!=$("#"+blackKingPos).attr("class") && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9816"))
+            {
+             return true;
+            }
+        }
+    }
+    u=blackKingPos.charAt(0);
+    s=blackKingPos.charAt(1);
+    if((parseInt(u)+2)<=7 && (parseInt(s)+1)<=7)
+    {
+        u=parseInt(u)+2;
+        s=parseInt(s)+1;
+        if(document.getElementById(u.toString()+s.toString().innerHTML)!="")
+        {
+            if($("#"+u.toString()+s.toString()).attr("class")!=$("#"+blackKingPos).attr("class") && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9816"))
+            {
+             return true;
+            }
+        }
+    }
+    return false;   
 
 }
