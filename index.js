@@ -1125,7 +1125,8 @@ function Empty(currentID,prevID)
     document.getElementById(prevID).classList.remove($("#"+prevID).attr("class"));
     document.getElementById(prevID).innerHTML=""; 
    if(wkingcheck(whiteKingPos) && flag=="white")
-   {console.log("white king check")
+   {   console.log("white king check")
+       alert("white king check")
        document.getElementById(prevID).innerHTML=z;
        document.getElementById(currentID).innerHTML=""
        document.getElementById(prevID).classList.add($("#"+currentID).attr("class"));
@@ -1134,6 +1135,7 @@ function Empty(currentID,prevID)
    }
    if(flag=="black" && bkingcheck(blackKingPos))
    {console.log("black king check")
+    alert("black king check")
     document.getElementById(prevID).innerHTML=z;
     document.getElementById(currentID).innerHTML=""
     document.getElementById(prevID).classList.add($("#"+currentID).attr("class"));
@@ -1154,7 +1156,8 @@ function nonEmpty(currentID,prevID)
     document.getElementById(prevID).classList.remove($("#"+prevID).attr("class"))
 
   if(wkingcheck(whiteKingPos) && flag=="white")
-   {console.log("white king check")
+   {   console.log("white king check")
+       alert("white king check")
        document.getElementById(prevID).innerHTML=z;
        document.getElementById(currentID).innerHTML=y;
        document.getElementById(prevID).classList.remove($("#"+prevID).attr("class"))   
@@ -1164,7 +1167,8 @@ function nonEmpty(currentID,prevID)
        flag="black"
    }
    if(bkingcheck(blackKingPos) && flag=="black")
-   {console.log("black king check")
+   {   console.log("black king check")
+       alert("black king check")
        document.getElementById(prevID).innerHTML=z;
        document.getElementById(currentID).innerHTML=y;
        document.getElementById(prevID).classList.remove($("#"+prevID).attr("class"))   
