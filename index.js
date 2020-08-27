@@ -1225,7 +1225,7 @@ function wkingcheck(whiteKingPos){
         s=parseInt(s)+1;
         if(document.getElementById(u.toString()+s.toString()).innerHTML!="")
         {
-            if($("#"+u.toString()+s.toString()).attr("class")!=$("#"+whiteKingPos).attr("class") && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9819" || document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9821"))
+            if($("#"+u.toString()+s.toString()).attr("class")!="white" && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9819" || document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9821"))
             {
              return true;
             }
@@ -1240,7 +1240,7 @@ function wkingcheck(whiteKingPos){
         s=parseInt(s)-1;
         if(document.getElementById(u.toString()+s.toString()).innerHTML!="")
         {
-            if($("#"+u.toString()+s.toString()).attr("class")!=$("#"+whiteKingPos).attr("class") && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9819" || document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9821"))
+            if($("#"+u.toString()+s.toString()).attr("class")!="white" && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9819" || document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9821"))
             {
              return true;
             }
@@ -1253,9 +1253,9 @@ function wkingcheck(whiteKingPos){
     {
         u=parseInt(u)+1;
         s=parseInt(s)-1;
-        if(document.getElementById(u.toString()+s.toString().innerHTML)!="")
+        if(document.getElementById(u.toString()+s.toString()).innerHTML!="")
         {
-            if($("#"+u.toString()+s.toString()).attr("class")!=$("#"+whiteKingPos).attr("class") && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9819" || document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9821"))
+            if($("#"+u.toString()+s.toString()).attr("class")!="white" && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9819" || document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9821"))
             {
              return true;
             }
@@ -1268,9 +1268,9 @@ function wkingcheck(whiteKingPos){
     {
         u=parseInt(u)-1;
         s=parseInt(s)+1;
-        if(document.getElementById(u.toString()+s.toString().innerHTML)!="")
+        if(document.getElementById(u.toString()+s.toString()).innerHTML!="")
         {
-            if($("#"+u.toString()+s.toString()).attr("class")!=$("#"+whiteKingPos).attr("class") && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9819" || document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9821"))
+            if($("#"+u.toString()+s.toString()).attr("class")!="white" && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9819" || document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9821"))
             {
              return true;
             }
@@ -1282,9 +1282,9 @@ function wkingcheck(whiteKingPos){
     while((parseInt(u)+1)<=7)
     {
         u=parseInt(u)+1;
-        if(document.getElementById(u.toString()+s.toString().innerHTML)!="")
+        if(document.getElementById(u.toString()+s.toString()).innerHTML!="")
         {
-            if($("#"+u.toString()+s.toString()).attr("class")!=$("#"+whiteKingPos).attr("class") && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9819" || document.getElementById(currentID).innerText.charCodeAt(0)=="9820"))
+            if($("#"+u.toString()+s.toString()).attr("class")!="white" && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9819" || document.getElementById(currentID).innerText.charCodeAt(0)=="9820"))
             {
              return true;
             }
@@ -1296,23 +1296,23 @@ function wkingcheck(whiteKingPos){
     while((parseInt(u)-1)>=0)
     {
         u=parseInt(u)-1;
-        if(document.getElementById(u.toString()+s.toString().innerHTML)!="")
+        if(document.getElementById(u.toString()+s.toString()).innerHTML!="")
         {
-            if($("#"+u.toString()+s.toString()).attr("class")!=$("#"+whiteKingPos).attr("class") && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9819" || document.getElementById(currentID).innerText.charCodeAt(0)=="9820"))
+            if($("#"+u.toString()+s.toString()).attr("class")!="white" && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9819" || document.getElementById(currentID).innerText.charCodeAt(0)=="9820"))
             {
              return true;
             }
-        
+            break;
         }
     }
     u=whiteKingPos.charAt(0);
     s=whiteKingPos.charAt(1);
     while((parseInt(s)+1)<=7)
     {
-        u=parseInt(s)+1;
-        if(document.getElementById(u.toString()+s.toString().innerHTML)!="")
+        s=parseInt(s)+1;
+        if(document.getElementById(u.toString()+s.toString()).innerHTML!="")
         {
-            if($("#"+u.toString()+s.toString()).attr("class")!=$("#"+whiteKingPos).attr("class") && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9819" || document.getElementById(currentID).innerText.charCodeAt(0)=="9820"))
+            if($("#"+u.toString()+s.toString()).attr("class")!="white" && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9819" || document.getElementById(currentID).innerText.charCodeAt(0)=="9820"))
             {
              return true;
             }
@@ -1323,10 +1323,10 @@ function wkingcheck(whiteKingPos){
     s=whiteKingPos.charAt(1);
     while((parseInt(s)-1)>=0)
     {
-        u=parseInt(s)-1;
-        if(document.getElementById(u.toString()+s.toString().innerHTML)!="")
+        s=parseInt(s)-1;
+        if(document.getElementById(u.toString()+s.toString()).innerHTML!="")
         {
-            if($("#"+u.toString()+s.toString()).attr("class")!=$("#"+whiteKingPos).attr("class") && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9819" || document.getElementById(currentID).innerText.charCodeAt(0)=="9820"))
+            if($("#"+u.toString()+s.toString()).attr("class")!="white" && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9819" || document.getElementById(currentID).innerText.charCodeAt(0)=="9820"))
             {
              return true;
             }
@@ -1339,9 +1339,9 @@ function wkingcheck(whiteKingPos){
     {
         u=parseInt(u)-1;
         s=parseInt(s)-2;
-        if(document.getElementById(u.toString()+s.toString().innerHTML)!="")
+        if(document.getElementById(u.toString()+s.toString()).innerHTML!="")
         {
-            if($("#"+u.toString()+s.toString()).attr("class")!=$("#"+whiteKingPos).attr("class") && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9822"))
+            if($("#"+u.toString()+s.toString()).attr("class")!="white" && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9822"))
             {
              return true;
             }
@@ -1353,9 +1353,9 @@ function wkingcheck(whiteKingPos){
     {
         u=parseInt(u)-1;
         s=parseInt(s)+2;
-        if(document.getElementById(u.toString()+s.toString().innerHTML)!="")
+        if(document.getElementById(u.toString()+s.toString()).innerHTML!="")
         {
-            if($("#"+u.toString()+s.toString()).attr("class")!=$("#"+whiteKingPos).attr("class") && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9822"))
+            if($("#"+u.toString()+s.toString()).attr("class")!="white" && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9822"))
             {
              return true;
             }
@@ -1367,9 +1367,9 @@ function wkingcheck(whiteKingPos){
     {
         u=parseInt(u)+1;
         s=parseInt(s)-2;
-        if(document.getElementById(u.toString()+s.toString().innerHTML)!="")
+        if(document.getElementById(u.toString()+s.toString()).innerHTML!="")
         {
-            if($("#"+u.toString()+s.toString()).attr("class")!=$("#"+whiteKingPos).attr("class") && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9822"))
+            if($("#"+u.toString()+s.toString()).attr("class")!="white" && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9822"))
             {
              return true;
             }
@@ -1381,9 +1381,9 @@ function wkingcheck(whiteKingPos){
     {
         u=parseInt(u)+1;
         s=parseInt(s)+2;
-        if(document.getElementById(u.toString()+s.toString().innerHTML)!="")
+        if(document.getElementById(u.toString()+s.toString()).innerHTML!="")
         {
-            if($("#"+u.toString()+s.toString()).attr("class")!=$("#"+whiteKingPos).attr("class") && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9822"))
+            if($("#"+u.toString()+s.toString()).attr("class")!="white" && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9822"))
             {
              return true;
             }
@@ -1395,9 +1395,9 @@ function wkingcheck(whiteKingPos){
     {
         u=parseInt(u)-2;
         s=parseInt(s)-1;
-        if(document.getElementById(u.toString()+s.toString().innerHTML)!="")
+        if(document.getElementById(u.toString()+s.toString()).innerHTML!="")
         {
-            if($("#"+u.toString()+s.toString()).attr("class")!=$("#"+whiteKingPos).attr("class") && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9822"))
+            if($("#"+u.toString()+s.toString()).attr("class")!="white" && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9822"))
             {
              return true;
             }
@@ -1409,9 +1409,9 @@ function wkingcheck(whiteKingPos){
     {
         u=parseInt(u)-2;
         s=parseInt(s)+1;
-        if(document.getElementById(u.toString()+s.toString().innerHTML)!="")
+        if(document.getElementById(u.toString()+s.toString()).innerHTML!="")
         {
-            if($("#"+u.toString()+s.toString()).attr("class")!=$("#"+whiteKingPos).attr("class") && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9822"))
+            if($("#"+u.toString()+s.toString()).attr("class")!="white" && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9822"))
             {
              return true;
             }
@@ -1423,9 +1423,9 @@ function wkingcheck(whiteKingPos){
     {
         u=parseInt(u)+2;
         s=parseInt(s)-1;
-        if(document.getElementById(u.toString()+s.toString().innerHTML)!="")
+        if(document.getElementById(u.toString()+s.toString()).innerHTML!="")
         {
-            if($("#"+u.toString()+s.toString()).attr("class")!=$("#"+whiteKingPos).attr("class") && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9822"))
+            if($("#"+u.toString()+s.toString()).attr("class")!="white" && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9822"))
             {
              return true;
             }
@@ -1437,9 +1437,9 @@ function wkingcheck(whiteKingPos){
     {
         u=parseInt(u)+2;
         s=parseInt(s)+1;
-        if(document.getElementById(u.toString()+s.toString().innerHTML)!="")
+        if(document.getElementById(u.toString()+s.toString()).innerHTML!="")
         {
-            if($("#"+u.toString()+s.toString()).attr("class")!=$("#"+whiteKingPos).attr("class") && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9822"))
+            if($("#"+u.toString()+s.toString()).attr("class")!="white" && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9822"))
             {
              return true;
             }
@@ -1454,9 +1454,9 @@ function bkingcheck(blackKingPos){
     {
         u=parseInt(u)+1;
         s=parseInt(s)+1;
-        if(document.getElementById(u.toString()+s.toString().innerHTML)!="")
+        if(document.getElementById(u.toString()+s.toString()).innerHTML!="")
         {
-            if($("#"+u.toString()+s.toString()).attr("class")!=$("#"+blackKingPos).attr("class") && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9813" || document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9815"))
+            if($("#"+u.toString()+s.toString()).attr("class")!="black" && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9813" || document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9815"))
             {
              return true;
             }
@@ -1469,9 +1469,9 @@ function bkingcheck(blackKingPos){
     {
         u=parseInt(u)-1;
         s=parseInt(s)-1;
-        if(document.getElementById(u.toString()+s.toString().innerHTML)!="")
+        if(document.getElementById(u.toString()+s.toString()).innerHTML!="")
         {
-            if($("#"+u.toString()+s.toString()).attr("class")!=$("#"+blackKingPos).attr("class") && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9813" || document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9815"))
+            if($("#"+u.toString()+s.toString()).attr("class")!="black" && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9813" || document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9815"))
             {
              return true;
             }
@@ -1484,9 +1484,9 @@ function bkingcheck(blackKingPos){
     {
         u=parseInt(u)+1;
         s=parseInt(s)-1;
-        if(document.getElementById(u.toString()+s.toString().innerHTML)!="")
+        if(document.getElementById(u.toString()+s.toString()).innerHTML!="")
         {
-            if($("#"+u.toString()+s.toString()).attr("class")!=$("#"+blackKingPos).attr("class") && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9813" || document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9815"))
+            if($("#"+u.toString()+s.toString()).attr("class")!="black" && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9813" || document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9815"))
             {
              return true;
             }
@@ -1499,9 +1499,9 @@ function bkingcheck(blackKingPos){
     {
         u=parseInt(u)-1;
         s=parseInt(s)+1;
-        if(document.getElementById(u.toString()+s.toString().innerHTML)!="")
+        if(document.getElementById(u.toString()+s.toString()).innerHTML!="")
         {
-            if($("#"+u.toString()+s.toString()).attr("class")!=$("#"+blackKingPos).attr("class") && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9813" || document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9815"))
+            if($("#"+u.toString()+s.toString()).attr("class")!="black" && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9813" || document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9815"))
             {
              return true;
             }
@@ -1513,9 +1513,9 @@ function bkingcheck(blackKingPos){
     while((parseInt(u)+1)<=7)
     {
         u=parseInt(u)+1;
-        if(document.getElementById(u.toString()+s.toString().innerHTML)!="")
+        if(document.getElementById(u.toString()+s.toString()).innerHTML!="")
         {
-            if($("#"+u.toString()+s.toString()).attr("class")!=$("#"+blackKingPos).attr("class") && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9813" || document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9814"))
+            if($("#"+u.toString()+s.toString()).attr("class")!="black" && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9813" || document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9814"))
             {
              return true;
             }
@@ -1527,9 +1527,9 @@ function bkingcheck(blackKingPos){
     while((parseInt(u)-1)>=0)
     {
         u=parseInt(u)-1;
-        if(document.getElementById(u.toString()+s.toString().innerHTML)!="")
+        if(document.getElementById(u.toString()+s.toString()).innerHTML!="")
         {
-            if($("#"+u.toString()+s.toString()).attr("class")!=$("#"+blackKingPos).attr("class") && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9813" || document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9814"))
+            if($("#"+u.toString()+s.toString()).attr("class")!="black" && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9813" || document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9814"))
             {
              return true;
             }
@@ -1540,10 +1540,10 @@ function bkingcheck(blackKingPos){
     s=blackKingPos.charAt(1);
     while((parseInt(s)+1)<=7)
     {
-        u=parseInt(s)+1;
-        if(document.getElementById(u.toString()+s.toString().innerHTML)!="")
+        s=parseInt(s)+1;
+        if(document.getElementById(u.toString()+s.toString()).innerHTML!="")
         {
-            if($("#"+u.toString()+s.toString()).attr("class")!=$("#"+blackKingPos).attr("class") && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9813" || document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9814"))
+            if($("#"+u.toString()+s.toString()).attr("class")!="black" && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9813" || document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9814"))
             {
              return true;
             }
@@ -1554,10 +1554,10 @@ function bkingcheck(blackKingPos){
     s=blackKingPos.charAt(1);
     while((parseInt(s)-1)>=0)
     {
-        u=parseInt(s)-1;
-        if(document.getElementById(u.toString()+s.toString().innerHTML)!="")
+        s=parseInt(s)-1;
+        if(document.getElementById(u.toString()+s.toString()).innerHTML!="")
         {
-            if($("#"+u.toString()+s.toString()).attr("class")!=$("#"+blackKingPos).attr("class") && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9813" || document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9814"))
+            if($("#"+u.toString()+s.toString()).attr("class")!="black" && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9813" || document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9814"))
             {
              return true;
             }
@@ -1570,9 +1570,9 @@ function bkingcheck(blackKingPos){
     {
         u=parseInt(u)-1;
         s=parseInt(s)+2;
-        if(document.getElementById(u.toString()+s.toString().innerHTML)!="")
+        if(document.getElementById(u.toString()+s.toString()).innerHTML!="")
         {
-            if($("#"+u.toString()+s.toString()).attr("class")!=$("#"+blackKingPos).attr("class") && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9816"))
+            if($("#"+u.toString()+s.toString()).attr("class")!="black" && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9816"))
             {
              return true;
             }
@@ -1584,9 +1584,9 @@ function bkingcheck(blackKingPos){
     {
         u=parseInt(u)-1;
         s=parseInt(s)-2;
-        if(document.getElementById(u.toString()+s.toString().innerHTML)!="")
+        if(document.getElementById(u.toString()+s.toString()).innerHTML!="")
         {
-            if($("#"+u.toString()+s.toString()).attr("class")!=$("#"+blackKingPos).attr("class") && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9816"))
+            if($("#"+u.toString()+s.toString()).attr("class")!="black" && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9816"))
             {
              return true;
             }
@@ -1598,9 +1598,9 @@ function bkingcheck(blackKingPos){
     {
         u=parseInt(u)+1;
         s=parseInt(s)-2;
-        if(document.getElementById(u.toString()+s.toString().innerHTML)!="")
+        if(document.getElementById(u.toString()+s.toString()).innerHTML!="")
         {
-            if($("#"+u.toString()+s.toString()).attr("class")!=$("#"+blackKingPos).attr("class") && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9816"))
+            if($("#"+u.toString()+s.toString()).attr("class")!="black" && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9816"))
             {
              return true;
             }
@@ -1612,9 +1612,9 @@ function bkingcheck(blackKingPos){
     {
         u=parseInt(u)+1;
         s=parseInt(s)+2;
-        if(document.getElementById(u.toString()+s.toString().innerHTML)!="")
+        if(document.getElementById(u.toString()+s.toString()).innerHTML!="")
         {
-            if($("#"+u.toString()+s.toString()).attr("class")!=$("#"+blackKingPos).attr("class") && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9816"))
+            if($("#"+u.toString()+s.toString()).attr("class")!="black" && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9816"))
             {
              return true;
             }
@@ -1626,9 +1626,9 @@ function bkingcheck(blackKingPos){
     {
         u=parseInt(u)-2;
         s=parseInt(s)-1;
-        if(document.getElementById(u.toString()+s.toString().innerHTML)!="")
+        if(document.getElementById(u.toString()+s.toString()).innerHTML!="")
         {
-            if($("#"+u.toString()+s.toString()).attr("class")!=$("#"+blackKingPos).attr("class") && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9816"))
+            if($("#"+u.toString()+s.toString()).attr("class")!="black" && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9816"))
             {
              return true;
             }
@@ -1640,9 +1640,9 @@ function bkingcheck(blackKingPos){
     {
         u=parseInt(u)-2;
         s=parseInt(s)+1;
-        if(document.getElementById(u.toString()+s.toString().innerHTML)!="")
+        if(document.getElementById(u.toString()+s.toString()).innerHTML!="")
         {
-            if($("#"+u.toString()+s.toString()).attr("class")!=$("#"+blackKingPos).attr("class") && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9816"))
+            if($("#"+u.toString()+s.toString()).attr("class")!="black" && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9816"))
             {
              return true;
             }
@@ -1654,9 +1654,9 @@ function bkingcheck(blackKingPos){
     {
         u=parseInt(u)+2;
         s=parseInt(s)-1;
-        if(document.getElementById(u.toString()+s.toString().innerHTML)!="")
+        if(document.getElementById(u.toString()+s.toString()).innerHTML!="")
         {
-            if($("#"+u.toString()+s.toString()).attr("class")!=$("#"+blackKingPos).attr("class") && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9816"))
+            if($("#"+u.toString()+s.toString()).attr("class")!="black" && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9816"))
             {
              return true;
             }
@@ -1668,9 +1668,9 @@ function bkingcheck(blackKingPos){
     {
         u=parseInt(u)+2;
         s=parseInt(s)+1;
-        if(document.getElementById(u.toString()+s.toString().innerHTML)!="")
+        if(document.getElementById(u.toString()+s.toString()).innerHTML!="")
         {
-            if($("#"+u.toString()+s.toString()).attr("class")!=$("#"+blackKingPos).attr("class") && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9816"))
+            if($("#"+u.toString()+s.toString()).attr("class")!="black" && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9816"))
             {
              return true;
             }
