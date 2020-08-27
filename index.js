@@ -5,8 +5,11 @@
     var c1="",c2="",c3="",c4="";
     var num=1;
     var whiteKingPos="74",blackKingPos="04";
+    var flag="white";
     $("div").click(function(evt){
         currentID=this.id;
+        if(flag=="white" && ($("#"+currentID).attr("class")=="white" || document.getElementById(currentID).innerHTML==""))
+        {
          if(num==1){
             num=fun1();
         }else if(num==0){
@@ -23,6 +26,26 @@
             num=knight();
         }else if(num==7){
             num=king();
+        }}
+        if(flag=="black" && ($("#"+currentID).attr("class")=="black" || document.getElementById(currentID).innerHTML==""))
+        { if(num==1){
+            num=fun1();
+        }else if(num==0){
+            num=bpawn();
+        }else if(num==2){
+            num=wpawn();
+        }else if(num==3){
+            num=boat();
+        }else if(num==4){
+            num=bishop();
+        }else if(num==5){
+            num=queen();
+        }else if(num==6){
+            num=knight();
+        }else if(num==7){
+            num=king();
+        }
+
         }
         
     })
@@ -671,25 +694,30 @@
         if(currentID==(parseInt(u)+1).toString()+s.toString() && document.getElementById(currentID).innerHTML=="")
         {
           Empty(currentID,prevID);
+          flag="white"
           return 1;
         }
         if(currentID==(parseInt(u)+2).toString()+s.toString() && document.getElementById(currentID).innerHTML=="")
         {
           Empty(currentID,prevID);
+          flag="white"
           return 1;
         }
         else if(currentID==(parseInt(u)+1).toString()+(parseInt(s)-1).toString() && document.getElementById(currentID).innerHTML!="" && $("#"+currentID).attr("class")!=$("#"+prevID).attr("class"))
         {
             nonEmpty(currentID,prevID);
+            flag="white"
             return 1;
         }
         else if(currentID==(parseInt(u)+1).toString()+(parseInt(s)+1).toString() && document.getElementById(currentID).innerHTML!="" && $("#"+currentID).attr("class")!=$("#"+prevID).attr("class"))
         {
             nonEmpty(currentID,prevID);
+            flag="white"
             return 1;
         }
-        else
+        else{
         return 1;
+        }
     }
 
 
@@ -703,25 +731,30 @@
         if(currentID==(parseInt(u)-1).toString()+s.toString() && document.getElementById(currentID).innerHTML=="")
         {
           Empty(currentID,prevID);
+          flag="black"
           return 1;
         }
         if(currentID==(parseInt(u)-2).toString()+s.toString() && document.getElementById(currentID).innerHTML=="")
         {
           Empty(currentID,prevID);
+          flag="black"
           return 1;
         }
         else if(currentID==(parseInt(u)-1).toString()+(parseInt(s)-1).toString() && document.getElementById(currentID).innerHTML!="" && $("#"+currentID).attr("class")!=$("#"+prevID).attr("class"))
         {
             nonEmpty(currentID,prevID);
+            flag="black"
             return 1;
         }
         else if(currentID==(parseInt(u)-1).toString()+(parseInt(s)+1).toString() && document.getElementById(currentID).innerHTML!="" && $("#"+currentID).attr("class")!=$("#"+prevID).attr("class"))
         {
             nonEmpty(currentID,prevID);
+            flag="black"
             return 1;
         }
-        else
+        else{
         return 1;
+        }
     }
 
 
@@ -819,7 +852,6 @@
                 u=parseInt(u)+1;
                 s=parseInt(s)+1;
                 removeGreen(u.toString(),s.toString())
-                kingcheck(u,s)
                 check(currentID,prevID,u,s);
             }
             var u=prevID.charAt(0);
@@ -829,7 +861,7 @@
                 u=parseInt(u)-1;
                 s=parseInt(s)-1;
                 removeGreen(u.toString(),s.toString())
-                kingcheck(u,s)
+               
                 check(currentID,prevID,u,s);
             }
             var u=prevID.charAt(0);
@@ -838,7 +870,7 @@
                 u=parseInt(u)+1;
                 s=parseInt(s)-1;
                 removeGreen(u.toString(),s.toString())
-                kingcheck(u,s)
+                
                 check(currentID,prevID,u,s);
             }
             var u=prevID.charAt(0);
@@ -848,7 +880,7 @@
                 u=parseInt(u)-1;
                 s=parseInt(s)+1;
                 removeGreen(u.toString(),s.toString())
-                kingcheck(u,s)
+               
                 check(currentID,prevID,u,s);
             }
             ///////////////////////////////////////////////////
@@ -858,7 +890,7 @@
             {
                 u=parseInt(u)+1;
                 removeGreen(u.toString(),s)
-                kingcheck(u,s)
+                
                 check(currentID,prevID,u,s);
             }
             var u=prevID.charAt(0);
@@ -868,7 +900,7 @@
                 u=parseInt(u)-1;
                 
                 removeGreen(u.toString(),s)
-                kingcheck(u,s)
+                
                 check(currentID,prevID,u,s);
             }
             var u=prevID.charAt(0);
@@ -877,7 +909,7 @@
             {  
                 s=parseInt(s)-1;
                 removeGreen(u,s.toString())
-                kingcheck(u,s)
+                
                 check(currentID,prevID,u,s);
             }
             var u=prevID.charAt(0);
@@ -886,7 +918,7 @@
             {
                 s=parseInt(s)+1;
                 removeGreen(u,s.toString())
-                kingcheck(u,s)
+                
                 check(currentID,prevID,u,s);
             }
             q1="",q2="",q3="",q4="",q5="",q6="",q7="",q8=""
@@ -1083,6 +1115,7 @@ function Empty(currentID,prevID)
     document.getElementById(currentID).classList.add($("#"+prevID).attr("class"));
     document.getElementById(prevID).classList.remove($("#"+currentID).attr("class"));
     document.getElementById(prevID).innerHTML="";
+    kingcheck(whiteKingPos,blackKingPos)
     
 }
 
@@ -1094,6 +1127,8 @@ function nonEmpty(currentID,prevID)
     document.getElementById(prevID).innerHTML=""
     document.getElementById(currentID).classList.remove($("#"+currentID).attr("class"))   
    document.getElementById(currentID).classList.add($("#"+prevID).attr("class"));
+   kingcheck(whiteKingPos,blackKingPos)
+   
    
 }
 
@@ -1106,11 +1141,20 @@ function check(currentID,prevID,u,s)
             if($("#"+currentID).attr("class")!=$("#"+prevID).attr("class"))
             {
              nonEmpty(currentID,prevID);
+             if(flag=="white")
+             flag="black"
+             else
+             flag="white";
             }
             return 1;
         }
         else{
             Empty(currentID,prevID);
+            if(flag=="white")
+             flag="black"
+             else
+             flag="white";
+             return 1;
             }
     }
 }
@@ -1124,13 +1168,30 @@ function KingTracker(prevID,u,s){
 
         blackKingPos=u.toString()+s.toString();
     }
- 
-
 }
 
 
-function kingcheck(u,s){
+function kingcheck(whiteKingPos,blackKingPos){
+    u=whiteKingPos.charAt(0);
+    s=whiteKingPos.charAt(1);
+    while((parseInt(u)+1)<=7 && (parseInt(s)+1)<=7)
+    {
+        u=parseInt(u)+1;
+        s=parseInt(s)+1;
+        if(document.getElementById(u.toString()+s.toString())!="")
+        {
+            if($("#"+u.toString()+s.toString()).attr("class")!=$("#"+whiteKingPos).attr("class") && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9819" || document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9813" || document.getElementById(currentID).innerText.charCodeAt(0)=="9821" || document.getElementById(currentID).innerText.charCodeAt(0)=="9815" ))
+            {
+             
+            }
+        }
+    }
 if(blackKingPos==u.toString()+s.toString()){
+
+    alert("black king check")
+}
+if(blackKingPos==u.toString()+s.toString()){
+    
     alert("black king check")
 }
 
