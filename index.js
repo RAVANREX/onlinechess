@@ -1060,10 +1060,9 @@ function knight(){
         
 function addGreen(i,j){
     $("#"+i+j).css({
-        "background-color":"green",
+        "background-color":"rgba(35, 168, 30,0.3)",
         "border-radius":"40%",
-        "opacity":"0.3",
-        "color":"#e06142",
+        "color":"#ff0000",
         
     })
 }
@@ -1110,7 +1109,7 @@ function check(currentID,prevID,u,s)
         }
         else{
             Empty(currentID,prevID);
-        }
+            }
     }
 }
 
