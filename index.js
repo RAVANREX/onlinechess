@@ -1060,8 +1060,8 @@ function knight(){
         
 function addGreen(i,j){
     $("#"+i+j).css({
-        "background-color":"rgba(35, 168, 30,0.3)",
-        "border-radius":"40%",
+        "background-color":"rgba(35, 168, 30,0.4)",
+        "border-radius":"50%",
         "color":"#ff0000",
         
     })
@@ -1077,22 +1077,24 @@ function removeGreen(i,j){
 
 
 function Empty(currentID,prevID)
-{
+{   document.getElementById("myAudio").play()
     var z=document.getElementById(prevID).innerHTML;
     document.getElementById(currentID).innerHTML=z;
     document.getElementById(currentID).classList.add($("#"+prevID).attr("class"));
     document.getElementById(prevID).classList.remove($("#"+currentID).attr("class"));
-    document.getElementById(prevID).innerHTML=""
+    document.getElementById(prevID).innerHTML="";
+    
 }
 
 
 function nonEmpty(currentID,prevID)
-{
+{   document.getElementById("myAudio").play()
     var z=document.getElementById(prevID).innerHTML;
     document.getElementById(currentID).innerHTML=z;
     document.getElementById(prevID).innerHTML=""
     document.getElementById(currentID).classList.remove($("#"+currentID).attr("class"))   
    document.getElementById(currentID).classList.add($("#"+prevID).attr("class"));
+   
 }
 
 
