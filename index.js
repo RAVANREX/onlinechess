@@ -1118,15 +1118,16 @@ function removeGreen(i,j){
 
 
 function Empty(currentID,prevID)
-{   document.getElementById("myAudio").play()
+{   var x=1;
     var z=document.getElementById(prevID).innerHTML;
     document.getElementById(currentID).innerHTML=z;
     document.getElementById(currentID).classList.add($("#"+prevID).attr("class"));
     document.getElementById(prevID).classList.remove($("#"+prevID).attr("class"));
     document.getElementById(prevID).innerHTML=""; 
-   if(wkingcheck(whiteKingPos) && flag=="white")
-   {   console.log("white king check")
-       alert("white king check")
+    console.log(whiteKingPos)
+   if(flag=="white" && wkingcheck(whiteKingPos))
+   {   
+       x=0;
        document.getElementById(prevID).innerHTML=z;
        document.getElementById(currentID).innerHTML=""
        document.getElementById(prevID).classList.add($("#"+currentID).attr("class"));
@@ -1134,19 +1135,23 @@ function Empty(currentID,prevID)
        flag="black"    
    }
    if(flag=="black" && bkingcheck(blackKingPos))
-   {console.log("black king check")
-    alert("black king check")
+   {
+       x=0;
     document.getElementById(prevID).innerHTML=z;
     document.getElementById(currentID).innerHTML=""
     document.getElementById(prevID).classList.add($("#"+currentID).attr("class"));
     document.getElementById(currentID).classList.remove($("#"+prevID).attr("class"))
     flag="white"
    }
+   if(x==1)
+   document.getElementById("myAudio").play()
+   else
+   document.getElementById("alert").play()
 }
 
 
 function nonEmpty(currentID,prevID)
-{   document.getElementById("myAudio").play() 
+{   var x=1;
     var z=document.getElementById(prevID).innerHTML;
     var y=document.getElementById(currentID).innerHTML;
     document.getElementById(currentID).innerHTML=z;
@@ -1154,10 +1159,9 @@ function nonEmpty(currentID,prevID)
     document.getElementById(currentID).classList.remove($("#"+currentID).attr("class"))
     document.getElementById(currentID).classList.add($("#"+prevID).attr("class"));
     document.getElementById(prevID).classList.remove($("#"+prevID).attr("class"))
-
-  if(wkingcheck(whiteKingPos) && flag=="white")
-   {   console.log("white king check")
-       alert("white king check")
+   
+  if(flag=="white" && wkingcheck(whiteKingPos))
+   {x=0;
        document.getElementById(prevID).innerHTML=z;
        document.getElementById(currentID).innerHTML=y;
        document.getElementById(prevID).classList.remove($("#"+prevID).attr("class"))   
@@ -1166,9 +1170,8 @@ function nonEmpty(currentID,prevID)
        document.getElementById(currentID).classList.add($("#"+prevID).attr("class"));
        flag="black"
    }
-   if(bkingcheck(blackKingPos) && flag=="black")
-   {   console.log("black king check")
-       alert("black king check")
+   if(flag=="black" && bkingcheck(blackKingPos))
+   {x=0;
        document.getElementById(prevID).innerHTML=z;
        document.getElementById(currentID).innerHTML=y;
        document.getElementById(prevID).classList.remove($("#"+prevID).attr("class"))   
@@ -1177,6 +1180,10 @@ function nonEmpty(currentID,prevID)
        document.getElementById(currentID).classList.add($("#"+prevID).attr("class"));
        flag="white"
    }
+   if(x==1)
+   document.getElementById("myAudio").play()
+   else
+   document.getElementById("alert").play()
 
 }
 
@@ -1220,125 +1227,190 @@ function KingTracker(prevID,u,s){
 
 
 function wkingcheck(whiteKingPos){
-    console.log(whiteKingPos)
+    
     u=whiteKingPos.charAt(0);
     s=whiteKingPos.charAt(1);
+    console.log(1)
+    var count=0;
     while((parseInt(u)+1)<=7 && (parseInt(s)+1)<=7)
     {
         u=parseInt(u)+1;
         s=parseInt(s)+1;
+        count++;
+        if(count==1 && document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9818")
+        {
+          return true;
+        }
         if(document.getElementById(u.toString()+s.toString()).innerHTML!="")
         {
             if($("#"+u.toString()+s.toString()).attr("class")!="white" && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9819" || document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9821"))
             {
              return true;
             }
+            else
             break;
         }
     }
     u=whiteKingPos.charAt(0);
     s=whiteKingPos.charAt(1);
+    console.log(2)
+    count=0;
     while((parseInt(u)-1)>=0 && (parseInt(s)-1)>=0)
     {
         u=parseInt(u)-1;
         s=parseInt(s)-1;
+        count++;
+        if(count==1 && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9818" || document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9823"))
+        {
+          return true;
+        }
         if(document.getElementById(u.toString()+s.toString()).innerHTML!="")
         {
             if($("#"+u.toString()+s.toString()).attr("class")!="white" && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9819" || document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9821"))
             {
              return true;
             }
+            else
             break;
         }
     }
     u=whiteKingPos.charAt(0);
     s=whiteKingPos.charAt(1);
+    console.log(3)
+    count=0;
     while((parseInt(u)+1)<=7 && (parseInt(s)-1)>=0)
     {
         u=parseInt(u)+1;
         s=parseInt(s)-1;
+        count++;
+        if(count==1 && document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9818")
+        {
+          return true;
+        }
         if(document.getElementById(u.toString()+s.toString()).innerHTML!="")
         {
             if($("#"+u.toString()+s.toString()).attr("class")!="white" && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9819" || document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9821"))
             {
              return true;
             }
+            else
             break;
         }
     }
     u=whiteKingPos.charAt(0);
     s=whiteKingPos.charAt(1);
+    console.log(4)
+    count=0;
     while((parseInt(u)-1)>=0 && (parseInt(s)+1)<=7)
     {
         u=parseInt(u)-1;
         s=parseInt(s)+1;
+        count++;
+        if(count==1 && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9818" || document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9823"))
+        {
+          return true;
+        }
         if(document.getElementById(u.toString()+s.toString()).innerHTML!="")
         {
             if($("#"+u.toString()+s.toString()).attr("class")!="white" && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9819" || document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9821"))
             {
              return true;
             }
+            else
             break;
         }
     }
     u=whiteKingPos.charAt(0);
     s=whiteKingPos.charAt(1);
+    console.log(5)
+    count=0;
     while((parseInt(u)+1)<=7)
     {
         u=parseInt(u)+1;
+        count++;
+        if(count==1 && document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9818")
+        {
+          return true;
+        }
         if(document.getElementById(u.toString()+s.toString()).innerHTML!="")
         {
             if($("#"+u.toString()+s.toString()).attr("class")!="white" && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9819" || document.getElementById(currentID).innerText.charCodeAt(0)=="9820"))
             {
              return true;
             }
+            else
             break;
         }
     }
     u=whiteKingPos.charAt(0);
     s=whiteKingPos.charAt(1);
+    console.log(6)
+    count=0;
     while((parseInt(u)-1)>=0)
     {
         u=parseInt(u)-1;
+        count++;
+        if(count==1 && document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9818")
+        {
+          return true;
+        }
         if(document.getElementById(u.toString()+s.toString()).innerHTML!="")
         {
             if($("#"+u.toString()+s.toString()).attr("class")!="white" && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9819" || document.getElementById(currentID).innerText.charCodeAt(0)=="9820"))
             {
              return true;
             }
+            else
             break;
         }
     }
     u=whiteKingPos.charAt(0);
     s=whiteKingPos.charAt(1);
+    console.log(7)
+    count=0
     while((parseInt(s)+1)<=7)
     {
         s=parseInt(s)+1;
+        count++;
+        if(count==1 && document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9818")
+        {
+          return true;
+        }
         if(document.getElementById(u.toString()+s.toString()).innerHTML!="")
         {
             if($("#"+u.toString()+s.toString()).attr("class")!="white" && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9819" || document.getElementById(currentID).innerText.charCodeAt(0)=="9820"))
             {
              return true;
             }
+            else
             break;
         }
     }
     u=whiteKingPos.charAt(0);
     s=whiteKingPos.charAt(1);
+    console.log(8)
+    count=0
     while((parseInt(s)-1)>=0)
     {
         s=parseInt(s)-1;
+        count++;
+        if(count==1 && document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9818")
+        {
+          return true;
+        }
         if(document.getElementById(u.toString()+s.toString()).innerHTML!="")
         {
             if($("#"+u.toString()+s.toString()).attr("class")!="white" && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9819" || document.getElementById(currentID).innerText.charCodeAt(0)=="9820"))
             {
              return true;
             }
+            else
             break;
         }
     }
     u=whiteKingPos.charAt(0);
     s=whiteKingPos.charAt(1);
+    console.log(9)
     if((parseInt(u)-1)>=0 && (parseInt(s)-2)>=0)
     {
         u=parseInt(u)-1;
@@ -1353,6 +1425,7 @@ function wkingcheck(whiteKingPos){
     }
     u=whiteKingPos.charAt(0);
     s=whiteKingPos.charAt(1);
+    console.log(10)
     if((parseInt(u)-1)>=0 && (parseInt(s)+2)<=7)
     {
         u=parseInt(u)-1;
@@ -1367,6 +1440,7 @@ function wkingcheck(whiteKingPos){
     }
     u=whiteKingPos.charAt(0);
     s=whiteKingPos.charAt(1);
+    console.log(11)
     if((parseInt(u)+1)<=7 && (parseInt(s)-2)>=0)
     {
         u=parseInt(u)+1;
@@ -1381,6 +1455,7 @@ function wkingcheck(whiteKingPos){
     }
     u=whiteKingPos.charAt(0);
     s=whiteKingPos.charAt(1);
+    console.log(12)
     if((parseInt(u)+1)<=7 && (parseInt(s)+2)<=7)
     {
         u=parseInt(u)+1;
@@ -1454,117 +1529,173 @@ function wkingcheck(whiteKingPos){
 function bkingcheck(blackKingPos){
     u=blackKingPos.charAt(0);
     s=blackKingPos.charAt(1);
+    count=0;
     while((parseInt(u)+1)<=7 && (parseInt(s)+1)<=7)
     {
         u=parseInt(u)+1;
         s=parseInt(s)+1;
+        count++;
+        if(count==1 && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9812" || document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9817"))
+        {
+          return true;
+        }
         if(document.getElementById(u.toString()+s.toString()).innerHTML!="")
         {
             if($("#"+u.toString()+s.toString()).attr("class")!="black" && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9813" || document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9815"))
             {
              return true;
             }
+            else
             break;
         }
     }
     u=blackKingPos.charAt(0);
     s=blackKingPos.charAt(1);
+    count=0;
     while((parseInt(u)-1)>=0 && (parseInt(s)-1)>=0)
     {
         u=parseInt(u)-1;
         s=parseInt(s)-1;
+        count++;
+        if(count==1 && document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9812")
+        {
+          return true;
+        }
         if(document.getElementById(u.toString()+s.toString()).innerHTML!="")
         {
             if($("#"+u.toString()+s.toString()).attr("class")!="black" && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9813" || document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9815"))
             {
              return true;
             }
+            else
             break;
         }
     }
     u=blackKingPos.charAt(0);
     s=blackKingPos.charAt(1);
+    count=0;
     while((parseInt(u)+1)<=7 && (parseInt(s)-1)>=0)
     {
         u=parseInt(u)+1;
         s=parseInt(s)-1;
+        count++;
+        if(count==1 && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9812" || document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9817"))
+        {
+          return true;
+        }
         if(document.getElementById(u.toString()+s.toString()).innerHTML!="")
         {
             if($("#"+u.toString()+s.toString()).attr("class")!="black" && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9813" || document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9815"))
             {
              return true;
             }
+            else
             break;
         }
     }
     u=blackKingPos.charAt(0);
     s=blackKingPos.charAt(1);
+    count=0
     while((parseInt(u)-1)>=0 && (parseInt(s)+1)<=7)
     {
         u=parseInt(u)-1;
         s=parseInt(s)+1;
+        count++;
+        if(count==1 && document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9812")
+        {
+          return true;
+        }
         if(document.getElementById(u.toString()+s.toString()).innerHTML!="")
         {
             if($("#"+u.toString()+s.toString()).attr("class")!="black" && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9813" || document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9815"))
             {
              return true;
             }
+            else
             break;
         }
     }
     u=blackKingPos.charAt(0);
     s=blackKingPos.charAt(1);
+    count=0;
     while((parseInt(u)+1)<=7)
     {
         u=parseInt(u)+1;
+        count++;
+        if(count==1 && document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9812")
+        {
+          return true;
+        }
         if(document.getElementById(u.toString()+s.toString()).innerHTML!="")
         {
             if($("#"+u.toString()+s.toString()).attr("class")!="black" && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9813" || document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9814"))
             {
              return true;
             }
+            else
             break;
         }
     }
     u=blackKingPos.charAt(0);
     s=blackKingPos.charAt(1);
+    count=0;
     while((parseInt(u)-1)>=0)
     {
         u=parseInt(u)-1;
+        count++;
+        if(count==1 && document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9812")
+        {
+          return true;
+        }
         if(document.getElementById(u.toString()+s.toString()).innerHTML!="")
         {
             if($("#"+u.toString()+s.toString()).attr("class")!="black" && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9813" || document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9814"))
             {
              return true;
             }
+            else
             break;
         }
     }
     u=blackKingPos.charAt(0);
     s=blackKingPos.charAt(1);
+    count=0;
     while((parseInt(s)+1)<=7)
     {
         s=parseInt(s)+1;
+        count++;
+        if(count==1 && document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9812")
+        {
+          return true;
+        }
         if(document.getElementById(u.toString()+s.toString()).innerHTML!="")
         {
             if($("#"+u.toString()+s.toString()).attr("class")!="black" && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9813" || document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9814"))
             {
              return true;
             }
+            else
             break;
         }
     }
     u=blackKingPos.charAt(0);
     s=blackKingPos.charAt(1);
+    count=0
     while((parseInt(s)-1)>=0)
     {
         s=parseInt(s)-1;
+        count++;
+        if(count==1 && document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9812")
+        {
+          return true;
+        }
         if(document.getElementById(u.toString()+s.toString()).innerHTML!="")
         {
             if($("#"+u.toString()+s.toString()).attr("class")!="black" && (document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9813" || document.getElementById(u.toString()+s.toString()).innerText.charCodeAt(0)=="9814"))
             {
              return true;
             }
+            else
             break;
         }
     }
