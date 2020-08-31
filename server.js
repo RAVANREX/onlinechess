@@ -24,15 +24,24 @@ app.set('view engine' ,'ejs')
  app.get('/',(req,res)=>{
   res.render('index' )
  })
- app.get('/room', (req,res) =>{
-  res.render('room.ejs')
-  
- })
+
  app.get('/singleplayer',(req,res)=>{
   res.render('singleplayer.ejs')
  })
- app.get('/multiplayer', (req,res) =>{
-  res.render('multiplayer.ejs')
+ app.get('/room', (req,res) =>{
+  res.render('room.ejs' , {rooms: rooms })
+ })
+ app.post('/multiplayer',(req, res)=>{
+   if(rooms[req.body.room] != null){
+     return res.redirect('/room')
+   }
+   rooms[req.body.room] = { user: {} }
+   res.redirect(req.body.room)
+
+ })
+
+ app.get('/:multiplayer', (req,res) =>{
+  res.render('multiplayer.ejs',{roomName:req.params.room} ) 
 })
 
 
