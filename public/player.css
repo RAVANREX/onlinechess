@@ -1,0 +1,156 @@
+*{
+    padding:0px;
+    margin:0px;
+}
+body{
+    
+    background: rgb(131,58,180);
+background: radial-gradient(circle, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 56%, rgba(252,176,69,1) 100%);
+}
+#start{
+    background-color:blue;
+    margin-left:46%;
+    margin-top:10px;
+    border:solid 2px black;
+    font-weight: bold;
+    font-size:1.2rem;
+    box-shadow: black 4px 4px 2px;
+    color:white
+}
+header{
+    position: relative;
+    height:80px;
+}
+#main{
+    
+    display:grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 16% 70% 1fr;
+    grid-template-areas:
+    "#left .chessboard #right";
+
+}
+.box{
+    background-image: url("chess.svg");
+    background-repeat: no-repeat;
+    width:600px;
+    height: 600px;
+    display:grid;
+    grid-template-rows: repeat(8,75px);
+    grid-template-columns: repeat(8,75px);
+}
+.inside{
+    font-size:65px;
+    text-align:center;
+    font-family: a;
+
+    
+}
+.chessboard {
+    width: 650px;
+    height: 650px;
+    margin: auto;
+    border: 25px solid #333;
+    box-shadow: black 8px 8px 4px;
+}
+
+.cross{
+    margin:10px;
+    height: 600px;
+    width:150px;
+    border:solid black 5px;
+    border-radius: 20px;
+    display:grid;
+    grid-template-rows:repeat(8,75px);
+    grid-template-columns:repeat(2,75px);
+    background-image: url("box.jpg");
+    background-repeat: no-repeat;
+    box-shadow: 8px 8px 5px black;
+}
+
+.rotate{
+    transform: rotate(180deg);
+}
+
+
+.player {
+    margin: 2vmin;
+    color:red;
+      background-color:black;
+      width:150px;
+      height:75px;
+      text-align:center;
+  }
+  
+  .connected, .ready {
+    font-weight: normal;
+    opacity: .25;
+    text-decoration: line-through;
+  }
+  
+  .connected.active,
+  .ready.active {
+    opacity: 1;
+    text-decoration: none;
+  }
+  .p1{
+      position: absolute;
+      left:0;
+    
+  }
+  .p2{
+      position: absolute;
+      right:0;
+      
+  }
+  .no-close .ui-dialog-titlebar-close {
+    display: none;
+  }
+.msg{
+    color:red;
+    text-align: center;
+    font-weight: bold;
+    font-size:2rem;
+
+}
+
+@media(max-width:650px)
+{body{
+    background: rgb(131,58,180);
+background: radial-gradient(circle, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 56%, rgba(252,176,69,1) 100%);
+    
+}
+header{
+    width:650px;
+}
+#main{
+    display:grid;
+    grid-template-rows: 16% 70% 1fr;
+    grid-template-columns: 1fr;
+    row-gap: 20px;
+    grid-template-areas:
+    "#left"
+    ".chessboard" 
+    "#right";
+}
+#start{
+    margin-left:40%;
+    margin-top:20px;
+}
+
+    
+    .cross{
+        margin:10px;
+        height: 150px;
+        width:600px;
+        border:solid black 5px;
+        border-radius: 20px;
+        display:grid;
+        grid-template-rows:repeat(2,75px);
+        grid-template-columns:repeat(8,75px);
+        background-image: url(box1.jpg);
+        background-repeat: no-repeat;
+        box-shadow: 8px 8px 5px black;
+    }
+
+}
