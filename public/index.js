@@ -49,7 +49,9 @@ $("#myInput").on("keyup", function() {
 
       socket.emit('room',roomName);
       socket.on('server-full',full=>{
+
         if(full){
+
         $("#msg").dialog({
             dialogClass:"no-close",
             modal:true,

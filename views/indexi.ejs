@@ -4,6 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
     <title>Document</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script defer src="http://localhost:4000/socket.io/socket.io.js"></script>
@@ -15,20 +27,25 @@
 <body>
     
         <div class="indexi">
-        <input id="myInput" type="text" placeholder="Search..">
+        <input id="myInput" type="text" placeholder="Search & join">
     <ul id="myList">
     <% Object.keys(rooms).forEach(room => { %>
     <a href="/<%= room %>" class="button btnPush btnLightBlue"><%= room %></a>
         
       <% }) %>
     </ul>
-    <div class="indexiform">
-    <form action="/room" method="POST">
-    <input name="room" type="text" style="font-size:25px"  size="28" required>
-    <button id="btn" type="Submit">New Room</button>
+    <div class="indexiform" >
+    <form action="/room" method="POST" >
+      <div class="d-flex p-3 bg-secondary text-white">
+    <input name="room" class="form-control" type="text"  maxlength="10" required>
+    <button type="button" class="btn btn-success form-control"  type="Submit">Create Room</button>
+     </div>
     </form>
 </div>
 </div>
+
+
+
 
 </body>
 </html>

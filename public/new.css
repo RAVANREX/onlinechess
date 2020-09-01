@@ -14,31 +14,25 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
     margin: auto;
     height: 600px;
     width: 600px;
-    background-color: red;
+    
     font-size:25px;
     color:white;
 
 }
 .indexiform{
-    position: absolute;
-    bottom: 0px;
+    
 }
 #btn{
     font-size:25px;
     margin-left: 20px;
 }
-#room-container{
-    height: 568px;
+#myList{
+    height: 500px;
     width: 600px;
     overflow: scroll;
     overflow-x:hidden;
     text-align:center;
 }
-
-
-
-
-
 
 /*///////////////////////////////////////////////////////////////////////*/
 
@@ -47,8 +41,6 @@ a:visited {
   text-decoration: none;
   color: #00AE68;
 }
-
-
 a.button {
   display: block;
   position: relative;
@@ -63,34 +55,42 @@ a.button {
   border-radius: 5px;
   transition: all 0.2s ;
 }
-
-
-
 .btnLightBlue {
   background: #5DC8CD;
 }
-
 /* 3D */
-
-
 .btnLightBlue.btnPush {
   box-shadow: 0px 5px 0px 0px #1E8185;
 }
-
-
 .btnPush:hover {
   margin-top: 15px;
   margin-bottom: 5px;
 }
-
-
-
 .btnLightBlue.btnPush:hover {
   box-shadow: 0px 0px 0px 0px #1E8185;
 }
 
 
-.wi{
-    content: "\a";
-    white-space: pre;
+#myInput{
+  align-content: center;
+}
+
+
+#myInput[type=text] {
+  width: 200px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: white;
+  background-image: url('searchicon.png');
+  background-position: 10px 10px; 
+  background-repeat: no-repeat;
+  padding: 12px 20px 12px 40px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+}
+
+#myInput[type=text]:focus {
+  width: 100%;
 }
