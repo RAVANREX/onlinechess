@@ -1,0 +1,96 @@
+@import url(https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700);
+
+
+
+
+
+body{
+    background-color: #1d76d4;
+background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='111' height='111' viewBox='0 0 200 200'%3E%3Cdefs%3E%3ClinearGradient id='a' gradientUnits='userSpaceOnUse' x1='100' y1='33' x2='100' y2='-3'%3E%3Cstop offset='0' stop-color='%23000' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23000' stop-opacity='1'/%3E%3C/linearGradient%3E%3ClinearGradient id='b' gradientUnits='userSpaceOnUse' x1='100' y1='135' x2='100' y2='97'%3E%3Cstop offset='0' stop-color='%23000' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23000' stop-opacity='1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg fill='%231964b4' fill-opacity='0.6'%3E%3Crect x='100' width='100' height='100'/%3E%3Crect y='100' width='100' height='100'/%3E%3C/g%3E%3Cg fill-opacity='0.5'%3E%3Cpolygon fill='url(%23a)' points='100 30 0 0 200 0'/%3E%3Cpolygon fill='url(%23b)' points='100 100 0 130 0 100 200 100 200 130'/%3E%3C/g%3E%3C/svg%3E");
+
+}
+.indexi{
+    position: relative;
+    margin: auto;
+    height: 600px;
+    width: 600px;
+    background-color: red;
+    font-size:25px;
+    color:white;
+
+}
+.indexiform{
+    position: absolute;
+    bottom: 0px;
+}
+#btn{
+    font-size:25px;
+    margin-left: 20px;
+}
+#room-container{
+    height: 568px;
+    width: 600px;
+    overflow: scroll;
+    overflow-x:hidden;
+    text-align:center;
+}
+
+
+
+
+
+
+/*///////////////////////////////////////////////////////////////////////*/
+
+a,
+a:visited {
+  text-decoration: none;
+  color: #00AE68;
+}
+
+
+a.button {
+  display: block;
+  position: relative;
+  float: left;
+  width: 80%;
+  padding: 0;
+  margin: 10px 20px 10px 55px;
+  font-weight: 600;
+  text-align: center;
+  line-height: 50px;
+  color: #FFF;
+  border-radius: 5px;
+  transition: all 0.2s ;
+}
+
+
+
+.btnLightBlue {
+  background: #5DC8CD;
+}
+
+/* 3D */
+
+
+.btnLightBlue.btnPush {
+  box-shadow: 0px 5px 0px 0px #1E8185;
+}
+
+
+.btnPush:hover {
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+
+
+.btnLightBlue.btnPush:hover {
+  box-shadow: 0px 0px 0px 0px #1E8185;
+}
+
+
+.wi{
+    content: "\a";
+    white-space: pre;
+}
