@@ -1,4 +1,9 @@
-
+$("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myList a").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
 
     var currentID="",prevID="",q1="",q2="",q3="",q4="",q5="",q6="",q7="",q8="";
     var b1="",b2="",b3="",b4="";

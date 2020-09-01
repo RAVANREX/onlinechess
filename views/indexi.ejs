@@ -5,44 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
-    rel = "stylesheet">
-    <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
-   <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script defer src="http://localhost:4000/socket.io/socket.io.js"></script>
     <script defer src="index.js"></script>
     <link rel="stylesheet" href="new.css">
-    <script>
-        $(function() {
-            var availableTutorials  = ["<% Object.keys(rooms).forEach(room => { %>
-                                             <%= room %> 
-
-                                        <% }) %>"]
-               
-            $( "#automplete-1" ).autocomplete({
-               source: availableTutorials
-            });
-         });
-
-    </script>
+  
 
 </head>
 <body>
     
-    <div class="indexi">
-        <div class = "ui-widget">
-            <p>Type "a" or "s"</p>
-            <label for = "automplete-1">Tags: </label>
-            <input id = "automplete-1">
-         </div>
-        
-    <div id="room-container">
+        <div class="indexi">
+        <input id="myInput" type="text" placeholder="Search..">
+    <ul id="myList">
     <% Object.keys(rooms).forEach(room => { %>
-    <div class="wi"><a href="/<%= room %>" class="button btnPush btnLightBlue"><%= room %></a></div>
+    <a href="/<%= room %>" class="button btnPush btnLightBlue"><%= room %></a>
         
       <% }) %>
-    </div>
+    </ul>
     <div class="indexiform">
     <form action="/room" method="POST">
     <input name="room" type="text" style="font-size:25px"  size="28" required>
