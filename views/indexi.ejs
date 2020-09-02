@@ -30,13 +30,13 @@
         <input id="myInput" type="text" placeholder="Search & join">
     <ul id="myList">
     <% Object.keys(rooms).forEach(room => { %>
-    <a href="/<%= room %>" class="button btnPush btnLightBlue"><%= room %></a>
+    <a href="/<%= room %>" class="button btnPush btnLightBlue"><%= room %><%=   %> </a>
         
       <% }) %>
     </ul>
     <div class="indexiform" >
     <form action="/room" method="POST" class="d-flex p-3 bg-secondary text-white">
-    <input name="room" class="form-control" type="text"    size="28" maxlength="10" required>
+    <input name="room" class=" form-control" type="text" placeholder="Room Name"     maxlength="10" required>
     <button  type="submit" class="btn btn-success form-control">Create Room</button>
     </form>
 </div>

@@ -5,6 +5,23 @@ $("#myInput").on("keyup", function() {
     });
   });
 
+
+  /* if (messageForm != null) {
+    const name = prompt('What is your name?')
+    appendMessage('You joined')
+    socket.emit('new-user', roomName, name)
+  
+    messageForm.addEventListener('submit', e => {
+      e.preventDefault()
+      const message = messageInput.value
+      appendMessage(`You: ${message}`)
+      socket.emit('send-chat-message', roomName, message)
+      messageInput.value = ''
+    })
+  }
+ */
+
+
     var currentID="",prevID="",q1="",q2="",q3="",q4="",q5="",q6="",q7="",q8="";
     var b1="",b2="",b3="",b4="";
     var c1="",c2="",c3="",c4="";
@@ -22,7 +39,7 @@ $("#myInput").on("keyup", function() {
     let currentplayer="user"
     var playingplayer=0
     const startButton=document.querySelector('#start')
-    const roomContainer = document.getElementById('room-container')
+    const roomContainer = document.getElementById('myList')
 
     const setupButtons=document.getElementById('setup-buttons')
 
@@ -34,14 +51,10 @@ $("#myInput").on("keyup", function() {
 
 
 
-    socket.on('room-created', room => {
-        const roomElement = document.createElement('div')
-        roomElement.innerText = room
-        const roomLink = document.createElement('a')
-        roomLink.href = `/${room}`
-        roomLink.innerText = 'join'
-        roomContainer.append(roomElement)
-        roomContainer.append(roomLink)
+    socket.on('room-created', data => {
+        
+
+        console.log(`this is ${data.room}-----${data.pass}`)
       })
       
 
