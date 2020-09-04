@@ -1,2 +1,2 @@
 list Showing chess with search and join
-unsafe
+https://sumansayanchess.herokuapp.com/
